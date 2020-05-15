@@ -53,8 +53,8 @@ namespace TokenBasedAuthentication.Controllers
             {
                 var userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name).Value;
 
-                var id = Int32.Parse(userId);
-                var user = _db.Users.Find(id);
+               
+                var user = _db.Users.FirstOrDefault(c=>c.UserName==userId);
                 return Ok(new
                 {
                     user.UserName,
